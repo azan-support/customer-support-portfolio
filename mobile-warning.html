@@ -99,16 +99,21 @@
   </div>
 
   <script>
-    function isMobileDevice() {
-      return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  function checkDevice() {
+    if (window.innerWidth <= 800) {
+      // Show mobile warning
+      document.getElementById("mobile-warning").style.display = "block";
+      document.getElementById("desktop-view").style.display = "none";
+    } else {
+      // Show desktop content
+      document.getElementById("mobile-warning").style.display = "none";
+      document.getElementById("desktop-view").style.display = "block";
     }
+  }
 
-    window.onload = function () {
-      if (!isMobileDevice()) {
-        document.getElementById("mobile-warning").style.display = "none";
-        document.getElementById("desktop-view").style.display = "block";
-      }
-    };
-  </script>
+  window.onload = checkDevice;
+  window.onresize = checkDevice; // Re-run when window is resized
+</script>
+
 </body>
 </html>
