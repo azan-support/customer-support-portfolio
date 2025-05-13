@@ -2,59 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mobile View Not Supported</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ff0000;
+      color: white;
       text-align: center;
-      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px;
     }
 
-    #desktop-view,
-    #mobile-warning {
-      display: none;
-      padding: 50px 20px;
+    .container {
+      max-width: 500px;
     }
 
-    #desktop-view {
-      background-color: #ffffff;
-      color: #333;
-    }
-
-    #mobile-warning {
-      background-color: #ffe0e0;
-      color: #b00020;
+    .warning-icon {
+      font-size: 100px;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .icons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .icons a {
+      background-color: white;
+      border-radius: 50%;
+      padding: 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      transition: transform 0.2s ease;
+    }
+
+    .icons a:hover {
+      transform: scale(1.1);
+    }
+
+    .icons img {
+      width: 30px;
+      height: 30px;
     }
   </style>
 </head>
 <body>
-  <div id="desktop-view">
-    <h1>Welcome to My Website</h1>
-    <p>This is the full desktop experience.</p>
+  <div class="container" id="mobile-warning">
+    <div class="warning-icon">⚠️</div>
+    <h1>Best Viewed on a Desktop</h1>
+    <p>
+      Hi! Thanks for visiting my portfolio. For the optimal viewing experience,
+      particularly the design and layout, please open this site on a desktop or laptop.
+    </p>
+    <p>
+      In the meantime, feel free to connect via LinkedIn or email. I'd love to hear from you!
+    </p>
+
+    <div class="icons">
+      <a href="https://wa.me/your-number" target="_blank" aria-label="WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+      </a>
+      <a href="mailto:your-email@example.com" aria-label="Email">
+        <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+      </a>
+      <a href="https://www.linkedin.com/in/muhammad-azan-ahmad-705a6b364" target="_blank" aria-label="LinkedIn">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+      </a>
+    </div>
   </div>
 
-  <div id="mobile-warning">
-    <h1>Best Viewed on a Desktop</h1>
-    <p>Hi! Thanks for visiting my portfolio. For the optimal experience — especially the design and layout — please open this site on a desktop or laptop.</p>
-    <p>
-      In the meantime, feel free to connect via
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-      or
-      <a href="mailto:your.email@example.com">email</a>.
-      I'd love to hear from you!
-    </p>
+  <div id="desktop-view" style="display: none;">
+    <!-- Desktop content can go here -->
   </div>
 
   <script>
@@ -63,9 +104,8 @@
     }
 
     window.onload = function () {
-      if (isMobileDevice()) {
-        document.getElementById("mobile-warning").style.display = "block";
-      } else {
+      if (!isMobileDevice()) {
+        document.getElementById("mobile-warning").style.display = "none";
         document.getElementById("desktop-view").style.display = "block";
       }
     };
