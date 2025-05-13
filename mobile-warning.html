@@ -1,45 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mobile View Not Supported</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       text-align: center;
       background-color: #f9f9f9;
+    }
+
+    #desktop-view,
+    #mobile-warning {
+      display: none;
+      padding: 50px 20px;
+    }
+
+    #desktop-view {
+      background-color: #ffffff;
       color: #333;
-      padding: 40px;
     }
-    .container {
-      max-width: 500px;
-      margin: auto;
+
+    #mobile-warning {
+      background-color: #ffe0e0;
+      color: #b00020;
     }
+
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
+
     p {
-      font-size: 18px;
-    }
-    .logo {
-      margin-bottom: 30px;
-    }
-    .logo img {
-      max-width: 100px;
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">
-      <!-- Optional: Add your logo here -->
-      <!-- <img src="your-logo.png" alt="Your Logo"> -->
-    </div>
-    <h1>Desktop View Recommended</h1>
-    <p>This website is designed for desktop or laptop screens. Please revisit it using a larger device for the best experience.</p>
+  <div id="desktop-view">
+    <h1>Welcome to My Website</h1>
+    <p>This is the full desktop experience.</p>
   </div>
+
+  <div id="mobile-warning">
+    <h1>Best Viewed on a Desktop</h1>
+    <p>Hi! Thanks for visiting my portfolio. For the optimal experience — especially the design and layout — please open this site on a desktop or laptop.</p>
+    <p>
+      In the meantime, feel free to connect via
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      or
+      <a href="mailto:your.email@example.com">email</a>.
+      I'd love to hear from you!
+    </p>
+  </div>
+
+  <script>
+    function isMobileDevice() {
+      return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    window.onload = function () {
+      if (isMobileDevice()) {
+        document.getElementById("mobile-warning").style.display = "block";
+      } else {
+        document.getElementById("desktop-view").style.display = "block";
+      }
+    };
+  </script>
 </body>
 </html>
