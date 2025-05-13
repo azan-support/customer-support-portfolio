@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mobile View Not Supported</title>
+
+  <!-- Redirect desktop users to main site -->
+  <script>
+    if (window.innerWidth > 800) {
+      window.location.href = "https://azan-support.github.io/customer-support-portfolio/";
+    }
+
+      window.onload = checkDevice;
+      window.onresize = checkDevice; // Re-run when window is resized
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -40,6 +51,11 @@
       line-height: 1.5;
     }
 
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
     .icons {
       margin-top: 30px;
       display: flex;
@@ -70,7 +86,7 @@
   </style>
 </head>
 <body>
-  <div class="container" id="mobile-warning">
+  <div class="container">
     <div class="warning-icon">⚠️</div>
     <h1>Best Viewed on a Desktop</h1>
     <p>
@@ -78,14 +94,17 @@
       particularly the design and layout, please open this site on a desktop or laptop.
     </p>
     <p>
-      In the meantime, feel free to connect via LinkedIn or email. I'd love to hear from you!
+      In the meantime, feel free to connect via 
+      <a href="https://www.linkedin.com/in/muhammad-azan-ahmad-705a6b364" target="_blank">LinkedIn</a> 
+      or 
+      <a href="mailto:azanahmad_official@outlook.com" target="_blank">email</a>. I'd love to hear from you!
     </p>
 
     <div class="icons">
-      <a href="https://wa.me/your-number" target="_blank" aria-label="WhatsApp">
+      <a href="https://wa.me/+923268746247" target="_blank" aria-label="WhatsApp">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
       </a>
-      <a href="mailto:your-email@example.com" aria-label="Email">
+      <a href="mailto:azanahmad_official@outlook.com" target="_blank" aria-label="Email">
         <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
       </a>
       <a href="https://www.linkedin.com/in/muhammad-azan-ahmad-705a6b364" target="_blank" aria-label="LinkedIn">
@@ -93,27 +112,5 @@
       </a>
     </div>
   </div>
-
-  <div id="desktop-view" style="display: none;">
-    <!-- Desktop content can go here -->
-  </div>
-
-  <script>
-  function checkDevice() {
-    if (window.innerWidth <= 800) {
-      // Show mobile warning
-      document.getElementById("mobile-warning").style.display = "block";
-      document.getElementById("desktop-view").style.display = "none";
-    } else {
-      // Show desktop content
-      document.getElementById("mobile-warning").style.display = "none";
-      document.getElementById("desktop-view").style.display = "block";
-    }
-  }
-
-  window.onload = checkDevice;
-  window.onresize = checkDevice; // Re-run when window is resized
-</script>
-
 </body>
 </html>
