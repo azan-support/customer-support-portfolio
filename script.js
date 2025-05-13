@@ -1,3 +1,7 @@
+if (window.innerWidth <= 800) {
+  window.location.href = "mobile-warning.html"; // Redirect mobile users immediately
+}
+
 (function() {
   const r = document.createElement("link").relList;
   if (r && r.supports && r.supports("modulepreload"))
